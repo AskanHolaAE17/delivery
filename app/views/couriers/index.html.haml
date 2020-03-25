@@ -1,6 +1,8 @@
-%p#notice= notice
+%p#notice
+  = notice
 
-%h1 Couriers
+%h2 
+  Кур'єри:
 
 %table
   %thead
@@ -8,9 +10,19 @@
       %th Title
       %th Description
       %th{:colspan => "3"}
-      
   %tbody
-    - @couriers.each do |courier|
+    - @couriers.each do |courier|	
       %tr
-        %td= courier.name
-        %td= courier.email
+      
+        %td
+          = link_to courier do
+            = courier.name
+        %td
+          = link_to courier do
+            = courier.email
+        %td
+          = link_to 'Переглянути', courier_path(courier)         
+          = link_to 'Редагувати', edit_courier_path(courier) 
+          = link_to 'Видалити', courier, method: :delete, data: { confirm: "Видалити запис про кур'єра?" }
+%br/
+= link_to "Створити нового кур'єра", new_courier_path

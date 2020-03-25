@@ -1,0 +1,20 @@
+= form_with(model: @courier, local: true) do |form|
+
+  - if @courier.errors.any?
+    #error_explanation
+      %h3
+        = pluralize(courier.errors.count, "error")
+        Допис не було збережено, оскiльки:
+      %ul
+        - courier.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = form.label 'Name'
+    = form.text_field :name
+
+  .field
+    = form.label 'Email'
+    = form.text_field :email
+  .actions
+    = form.submit

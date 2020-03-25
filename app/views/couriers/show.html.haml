@@ -1,0 +1,23 @@
+%p#notice
+  = notice
+
+%p
+  %strong 
+    Iм'я:
+  = @courier.name
+%p
+  %strong 
+    Email:
+  = @courier.email
+
+%br/
+= link_to "Створити нового кур'єра", new_courier_path    
+
+%br/
+= link_to 'Редагувати', edit_courier_path(@courier)
+
+%br/
+= link_to 'Видалити', @courier, method: :delete, data: { confirm: "Видалити запис про кур'єра?" }
+
+%br/
+= link_to "До списку всiх кур'єрiв:", couriers_path 
