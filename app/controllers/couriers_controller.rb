@@ -22,7 +22,10 @@ class CouriersController < ApplicationController
     end
   end
 
-  def show; end
+  def show 
+    @package = @courier.packages.build
+    @packages = Package.where courier_id: @courier.id
+  end
 
   def edit; end
 
@@ -38,6 +41,7 @@ class CouriersController < ApplicationController
     @courier.destroy
     redirect_to couriers_url, notice: "Запис про кур'єра було успiшно видалено."
   end
+
 
   private
 

@@ -1,0 +1,19 @@
+%h3
+  Додати посилку:
+
+= form_with(model: @package, local: true) do |form|
+
+  .field
+    = form.label 'Tracking Number'
+    = form.text_field :tracking_number
+
+  .field
+    = form.label 'Delivery Status'
+    = form.check_box :delivery_status
+    
+  = form.hidden_field :courier_id, value: @courier.id
+    
+  .actions
+    = form.submit
+    
+    

@@ -20,4 +20,19 @@
 = link_to 'Видалити', @courier, method: :delete, data: { confirm: "Видалити запис про кур'єра?" }
 
 %br/
-= link_to "До списку всiх кур'єрiв:", couriers_path 
+= link_to "До списку всiх кур'єрiв", couriers_path 
+
+%hr/
+- if @courier.packages.count > 0
+  - @courier.packages.each do |p|	
+    %p
+      %b
+        Tracking Number:
+      = p.tracking_number
+        
+    %p
+      %b
+        Delivery Status:
+      = p.delivery_status
+
+= render 'package_form', courier: @courier
